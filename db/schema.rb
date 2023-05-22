@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_22_163044) do
+ActiveRecord::Schema.define(version: 2023_05_22_175618) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "country_id"

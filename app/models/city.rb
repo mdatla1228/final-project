@@ -11,4 +11,13 @@
 #  user_id    :integer
 #
 class City < ApplicationRecord
+
+  belongs_to(:country, { :required => true, :class_name => "Country", :foreign_key => "country_id", :counter_cache => true })
+
+  has_many(:must_see_sights, { :class_name => "MustSeeSight", :foreign_key => "city_id", :dependent => :destroy })
+
+
+
+
+
 end

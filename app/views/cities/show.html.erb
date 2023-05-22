@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      City #<%= @the_city.id %> details
+   <%= @the_city.name %> 
     </h1>
 
     <div>
@@ -23,52 +23,32 @@
         Country
       </dt>
       <dd>
-        <%= @the_city.country_id %>
+       <a href="/countries/<%= @the_city.country_id %>"> <%= @the_city.country.name %></a>
       </dd>
 
-      <dt>
-        Name
-      </dt>
-      <dd>
-        <%= @the_city.name %>
-      </dd>
+      
 
       <dt>
-        User
-      </dt>
-      <dd>
-        <%= @the_city.user_id %>
-      </dd>
-
-      <dt>
-        Body
+        Description
       </dt>
       <dd>
         <%= @the_city.body %>
       </dd>
 
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_city.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_city.updated_at) %> ago
-      </dd>
     </dl>
   </div>
 </div>
-
 <hr>
 
-
+ 
 <div>
   <div>
+    <% if @current_user != nil %>
+    <% current_user_cities = City.where ({ :id => @the_city.id, :user_id => session.fetch(:user_id)}) %>
+
+    <% the_city = current_user_cities.at(0) %>
+
+    <% if the_city != nil %>
     <h2>
       Edit city
     </h2>
@@ -76,10 +56,9 @@
     <form action="/modify_city/<%= @the_city.id %>"  method="post" >
       <div>
         <label for="country_id_box">
-          Country
         </label>
 
-        <input type="text" id="country_id_box" name="query_country_id" value="<%= @the_city.country_id %>">
+        <input type="hidden" id="country_id_box" name="query_country_id" value="<%= @the_city.country_id %>">
       </div>
 
       <div>
@@ -92,10 +71,9 @@
 
       <div>
         <label for="user_id_box">
-          User
         </label>
 
-        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_city.user_id %>">
+        <input type="hidden" id="user_id_box" name="query_user_id" value="<%= @the_city.user_id %>">
       </div>
 
       <div>
@@ -111,6 +89,91 @@
       </button>
     </form>
   </div>
-</div>
+<% else%>
+
+<% end %>
+<% end %>
+
 
 <hr>
+<h2>Cities</h2>
+
+<table border="1">
+  <tr>
+    <th>
+      Must See Sight
+    </th>
+
+    <th>
+      Description
+    </th>
+
+     <th>
+      Details
+    </th>
+  </tr>
+
+  <% @the_city.must_see_sights.each do |a_sight| %>
+    <tr>
+      <td>
+        <%= a_sight.name %>
+      </td>
+
+      <td>
+        <%= a_sight.body %>
+      </td>
+
+     
+      <td>
+        <a href="/must_see_sights/<%= a_sight.id %>">
+          Show details
+        </a>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+
+<div>
+  <div>
+    <h2>
+      Add a  must see sight
+    </h2>
+
+    <form action="/insert_must_see_sight" method="post">
+      <div>
+        <label for="city_id_box">
+        </label>
+
+        <input type="hidden" id="city_id_box" name="query_city_id" value="<%= @the_city.id %>" >
+      </div>
+
+      <div>
+        <label for="user_id_box">
+        </label>
+
+        <input type="hidden" id="user_id_box" name="query_user_id" value= "<%= @the_city.user_id %>"" >
+      </div>
+
+      <div>
+        <label for="name_box">
+          Sight
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="body_box">
+          Description
+        </label>
+
+        <input type="text" id="body_box" name="query_body">
+      </div>
+
+      <button>
+        Create must see sight
+      </button>
+    </form>
+  </div>
+</div>

@@ -9,4 +9,10 @@
 #  user_id    :integer
 #
 class Bookmark < ApplicationRecord
+  rails generate draft:resource bookmark country_id:integer user_id:integer
+
+  belongs_to(:user, { :required => true, :class_name => "User", :foreign_key => "user_id", :counter_cache => true })
+
+  belongs_to(:country, { :required => true, :class_name => "Country", :foreign_key => "country_id" })
+  
 end

@@ -72,3 +72,40 @@
 </div>
 
 <hr>
+
+<h2>Cities</h2>
+
+<table border="1">
+  <tr>
+    <th>
+      City
+    </th>
+
+    <th>
+      Description
+    </th>
+
+     <th>
+      Details
+    </th>
+  </tr>
+
+  <% @the_country.cities.each do |a_city| %>
+    <tr>
+      <td>
+        <%= a_city.name %>
+      </td>
+
+      <td>
+        <%= a_city.body %>
+      </td>
+
+     
+      <td>
+        <a href="/cities/<%= a_city.id %>">
+          Show details
+        </a>
+      </td>
+    </tr>
+  <% end %>
+</table>

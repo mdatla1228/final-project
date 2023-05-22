@@ -1,11 +1,5 @@
 class MustSeeSightsController < ApplicationController
-  def index
-    matching_must_see_sights = MustSeeSight.all
 
-    @list_of_must_see_sights = matching_must_see_sights.order({ :created_at => :desc })
-
-    render({ :template => "must_see_sights/index.html.erb" })
-  end
 
   def show
     the_id = params.fetch("path_id")

@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   post("/insert_must_see_sight", { :controller => "must_see_sights", :action => "create" })
           
   # READ
-  get("/must_see_sights", { :controller => "must_see_sights", :action => "index" })
   
   get("/must_see_sights/:path_id", { :controller => "must_see_sights", :action => "show" })
   

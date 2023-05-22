@@ -38,7 +38,7 @@ class CitiesController < ApplicationController
 
     the_city.country_id = params.fetch("query_country_id")
     the_city.name = params.fetch("query_name")
-    the_city.user_id = params.fetch("query_user_id")
+    the_city.user_id = session.fetch(:user_id)
     the_city.body = params.fetch("query_body")
 
     if the_city.valid?
