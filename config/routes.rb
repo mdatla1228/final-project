@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-
+  
+  get("/", { :controller => "countries", :action => "home" })
 
 
   # Routes for the Must see sight resource:

@@ -1,4 +1,9 @@
 class CountriesController < ApplicationController
+  def home
+  
+    redirect_to("/countries")
+  end
+
   def index
     matching_countries = Country.all
 
