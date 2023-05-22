@@ -18,11 +18,11 @@
   <body> 
     <ul>
       <li>
-      <a href="/countries">Countries</a>
+      <a href="/countries">All Countries</a>
     </li>
       <li>
       <a href="/cities">Cities</a>
-    </li>
+      </li>
 
     <% if session.fetch(:user_id) == nil %>
       <li>
@@ -36,6 +36,11 @@
       </a>
     </li>
     <% else %>
+     <li>
+      <a href="/bookmarks">
+        My Bookmarks
+      </a>
+    </li>
     <li>
       <a href="/user_sign_out">
         Sign Out

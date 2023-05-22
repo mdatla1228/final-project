@@ -11,7 +11,7 @@
 <div>
   <div>
     <h2>
-      Add a new bookmark
+      Add a New Bookmark
     </h2>
 
     <form action="/insert_bookmark" method="post">
@@ -19,20 +19,23 @@
         <label for="country_id_box">
           Country
         </label>
+        
+        <select name="query_country_id">
+        <% Country.all.order(:name).each do |a_country| %>
+        
+        <option value="<%= a_country.id %>" >
+        <%= a_country.name %>
+        </option>
 
-        <input type="text" id="country_id_box" name="query_country_id">
+
+        <% end %>
+        </select>
       </div>
 
-      <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id">
-      </div>
+  
 
       <button>
-        Create bookmark
+        Bookmark this Country!
       </button>
     </form>
   </div>
