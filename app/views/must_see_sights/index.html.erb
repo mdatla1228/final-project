@@ -1,0 +1,134 @@
+<div>
+  <div>
+    <h1>
+      List of all must see sights
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new must see sight
+    </h2>
+
+    <form action="/insert_must_see_sight" method="post">
+      <div>
+        <label for="city_id_box">
+          City
+        </label>
+
+        <input type="text" id="city_id_box" name="query_city_id">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <div>
+        <label for="body_box">
+          Body
+        </label>
+
+        <input type="text" id="body_box" name="query_body">
+      </div>
+
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <button>
+        Create must see sight
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          City
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Body
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_must_see_sights.each do |a_must_see_sight| %>
+      <tr>
+        <td>
+          <%= a_must_see_sight.id %>
+        </td>
+
+        <td>
+          <%= a_must_see_sight.city_id %>
+        </td>
+
+        <td>
+          <%= a_must_see_sight.user_id %>
+        </td>
+
+        <td>
+          <%= a_must_see_sight.body %>
+        </td>
+
+        <td>
+          <%= a_must_see_sight.name %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_must_see_sight.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_must_see_sight.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/must_see_sights/<%= a_must_see_sight.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

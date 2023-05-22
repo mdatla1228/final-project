@@ -1,0 +1,116 @@
+<div>
+  <div>
+    <h1>
+      City #<%= @the_city.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/cities">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_city/<%= @the_city.id %>">
+          Delete city
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Country
+      </dt>
+      <dd>
+        <%= @the_city.country_id %>
+      </dd>
+
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_city.name %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_city.user_id %>
+      </dd>
+
+      <dt>
+        Body
+      </dt>
+      <dd>
+        <%= @the_city.body %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_city.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_city.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit city
+    </h2>
+
+    <form action="/modify_city/<%= @the_city.id %>"  method="post" >
+      <div>
+        <label for="country_id_box">
+          Country
+        </label>
+
+        <input type="text" id="country_id_box" name="query_country_id" value="<%= @the_city.country_id %>">
+      </div>
+
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_city.name %>">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_city.user_id %>">
+      </div>
+
+      <div>
+        <label for="body_box">
+          Body
+        </label>
+
+        <input type="text" id="body_box" name="query_body" value="<%= @the_city.body %>">
+      </div>
+
+      <button>
+        Update city
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

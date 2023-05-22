@@ -1,0 +1,92 @@
+<div>
+  <div>
+    <h1>
+      List of all countries
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new country
+    </h2>
+
+    <form action="/insert_country" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="body_box">
+          Description
+        </label>
+
+        <input type="text" id="body_box" name="query_body">
+      </div>
+
+      <button>
+        Create country
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Description
+        </th>
+
+       <th>
+          Details
+        </th>
+       
+
+     
+      </tr>
+
+      <% @list_of_countries.each do |a_country| %>
+      <tr>
+        <td>
+          <%= a_country.id %>
+        </td>
+
+        <td>
+          <%= a_country.name %>
+        </td>
+
+        <td>
+          <%= a_country.body %>
+        </td>
+
+
+        <td>
+          <a href="/countries/<%= a_country.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
