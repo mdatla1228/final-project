@@ -16,7 +16,8 @@ class City < ApplicationRecord
 
   has_many(:must_see_sights, { :class_name => "MustSeeSight", :foreign_key => "city_id", :dependent => :destroy })
 
-
+  belongs_to(:user, { :required => true, :class_name => "User", :foreign_key => "user_id", :counter_cache => true })
+    
 
 
 
