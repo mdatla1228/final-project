@@ -11,7 +11,7 @@
 #  user_id    :integer
 #
 class MustSeeSight < ApplicationRecord
-  belongs_to(:city, { :required => true, :class_name => "City", :foreign_key => "city_id", :counter_cache => true })
+  belongs_to(:city, { :required => true, :class_name => "City", :foreign_key => "city_id" })
 
   has_one(:country, { :through => :city, :source => :country })
   

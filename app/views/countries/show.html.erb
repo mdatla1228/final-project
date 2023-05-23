@@ -3,6 +3,11 @@
     <h1>
     <%= @the_country.name %> 
     </h1>
+
+    <h3>
+    <%= @the_country.body %>
+    </h3>
+
       <% if @current_user != nil %>
     <% current_user_bookmarks = Bookmark.where ({ :country_id => @the_country.id, :user_id => session.fetch(:user_id)}) %>
 
@@ -25,11 +30,6 @@
     <% end %>
 
     <div>
-      <div>
-        <a href="/countries">
-          Go back
-        </a>
-      </div>
 
       <div>
         <a href="/delete_country/<%= @the_country.id %>">
@@ -38,23 +38,8 @@
       </div>
     </div>
 
-    <dl>
-      <dt>
-        Name
-      </dt>
-      <dd>
-        <%= @the_country.name %>
-      </dd>
+   
 
-      <dt>
-        Body
-      </dt>
-      <dd>
-        <%= @the_country.body %>
-      </dd>
-
-  
-    </dl>
   </div>
 </div>
 
@@ -130,3 +115,41 @@
     </tr>
   <% end %>
 </table>
+
+<div>
+  <div>
+    <h2>
+      Add a new city
+    </h2>
+
+    <form action="/insert_city" method="post">
+      <div>
+        <input type="hidden" id="name_box" name="query_country_id" value="<%= @the_country.id %>">
+      </div>
+
+      <div>
+        <label for="name_box">
+          City
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <input type="hidden" id="user_id_box" name="query_user_id" value= "<%= session.fetch(:user_id) %>" >
+      </div>
+
+      <div>
+        <label for="body_box">
+          Body
+        </label>
+
+        <input type="text" id="body_box" name="query_body">
+      </div>
+
+      <button>
+        Create city
+      </button>
+    </form>
+  </div>
+</div>

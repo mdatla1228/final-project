@@ -1,5 +1,11 @@
 class MustSeeSightsController < ApplicationController
+  def index
+    matching_sites = MustSeeSight.all
 
+    @list_of_sights = matching_sites.order({ :created_at => :desc })
+
+    render({ :template => "must_see_sights/index.html.erb" })
+  end
 
   def show
     the_id = params.fetch("path_id")
@@ -20,7 +26,7 @@ class MustSeeSightsController < ApplicationController
 
     if the_must_see_sight.valid?
       the_must_see_sight.save
-      redirect_to("/must_see_sights", { :notice => "Must see sight created successfully." })
+      redirect_to("/must_see_sights/#{the_must_see_sight.id}", { :notice => "Must see sight created successfully." })
     else
       redirect_to("/must_see_sights", { :alert => the_must_see_sight.errors.full_messages.to_sentence })
     end

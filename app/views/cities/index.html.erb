@@ -10,39 +10,39 @@
 
 <hr>
 
-<div>
-  <div>
     <h2>
       Add a new city
     </h2>
-
+    <div>
     <form action="/insert_city" method="post">
-      <div>
+  
+    <div>
+      <label for="country_box">
+        Country
+      </label>
           <select name="query_country_id">
         <% Country.all.order(:name).each do |a_country| %>
         
         <option value="<%= a_country.id %>" >
        <%= a_country.name %>
-        </option>
+      
+         <% end%>
+        </div>
+    </div>
 
-      <% end%>
-       
-      </div>
+
 
       <div>
+
+        <input type="hidden" id="user_id_box" name="query_user_id" value="<%= session.fetch(:user_id) %>" >
+      </div>
+
+        <div>
         <label for="name_box">
-          Name
+          City
         </label>
 
         <input type="text" id="name_box" name="query_name">
-      </div>
-
-      <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id">
       </div>
 
       <div>
@@ -92,10 +92,13 @@
 
 
         <td>
+          <a href="/countries/<%= a_city.country.id %>">
           <%= a_city.country.name %>
+          </a>
         </td>
 
         <td>
+      
           <%= a_city.name %>
         </td>
 

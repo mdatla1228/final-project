@@ -46,9 +46,7 @@
   <div>
     <table border="1">
       <tr>
-        <th>
-          ID
-        </th>
+
 
         <th>
           Country
@@ -59,40 +57,32 @@
         </th>
 
         <th>
-          Created at
+          Bookmarked At
         </th>
 
         <th>
-          Updated at
-        </th>
-
-        <th>
+        Details
         </th>
       </tr>
 
       <% @list_of_bookmarks.each do |a_bookmark| %>
       <tr>
+
+
         <td>
-          <%= a_bookmark.id %>
+          <%= a_bookmark.country.name %>
         </td>
 
         <td>
-          <%= a_bookmark.country_id %>
-        </td>
-
-        <td>
-          <%= a_bookmark.user_id %>
+          <%= a_bookmark.user.first_name %>
         </td>
 
         <td>
           <%= time_ago_in_words(a_bookmark.created_at) %> ago
         </td>
+     
         <td>
-          <%= time_ago_in_words(a_bookmark.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/bookmarks/<%= a_bookmark.id %>">
+          <a href="/countries/<%= a_bookmark.country.id %>">
             Show details
           </a>
         </td>
