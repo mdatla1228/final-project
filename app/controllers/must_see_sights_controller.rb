@@ -55,6 +55,6 @@ class MustSeeSightsController < ApplicationController
 
     the_must_see_sight.destroy
 
-    redirect_to("/must_see_sights", { :notice => "Must see sight deleted successfully."} )
+    redirect_to("/cities/#{the_must_see_sight.city.id}", { :notice => "Must see sight deleted successfully."} )
   end
 end

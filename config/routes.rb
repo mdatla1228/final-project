@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # Routes for the Must see sight resource:
 
   # CREATE
+  get("/must_see_sights" , { :controller => "must_see_sights" , :action => "index"})
+  
   post("/insert_must_see_sight", { :controller => "must_see_sights", :action => "create" })
           
   # READ

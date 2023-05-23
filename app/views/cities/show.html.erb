@@ -12,15 +12,11 @@
       <dt>
        <h3>Country: <a href="/countries/<%= @the_city.country_id %>"> <%= @the_city.country.name %></a> </h3>
       </dt>
-      <dd>
-     
+    
 
     </dl>
-        <a href="/delete_city/<%= @the_city.id %>">
-          Delete city
-        </a>
-      </div>
-    </div>
+       
+  
   </div>
 </div>
 <hr>
@@ -74,6 +70,11 @@
       </button>
     </form>
   </div>
+
+   <a href="/delete_city/<%= @the_city.id %>">
+          Delete city
+        </a>
+        
   <hr>
 <% else%>
 
