@@ -4,33 +4,23 @@
    <%= @the_city.name %> 
     </h1>
 
-    <div>
+    <h3>
+     <%= @the_city.body %>
+    </h3>
 
-      <div>
+    <dl>
+      <dt>
+       <h3>Country: <a href="/countries/<%= @the_city.country_id %>"> <%= @the_city.country.name %></a> </h3>
+      </dt>
+      <dd>
+     
+
+    </dl>
         <a href="/delete_city/<%= @the_city.id %>">
           Delete city
         </a>
       </div>
     </div>
-
-    <dl>
-      <dt>
-        Country
-      </dt>
-      <dd>
-       <a href="/countries/<%= @the_city.country_id %>"> <%= @the_city.country.name %></a>
-      </dd>
-
-      
-
-      <dt>
-        Description
-      </dt>
-      <dd>
-        <%= @the_city.body %>
-      </dd>
-
-    </dl>
   </div>
 </div>
 <hr>
@@ -84,13 +74,14 @@
       </button>
     </form>
   </div>
+  <hr>
 <% else%>
 
 <% end %>
 <% end %>
 
 
-<hr>
+
 <h2>Top Attractions</h2>
 
 <table border="1">

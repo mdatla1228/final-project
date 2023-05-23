@@ -1,16 +1,17 @@
 <div>
   <div>
     <h1>
-      Must see sight #<%= @the_must_see_sight.id %> details
+     <%= @the_must_see_sight.name %> 
     </h1>
 
     <div>
-      <div>
-        <a href="/must_see_sights">
-          Go back
-        </a>
-      </div>
+      <h3><%= @the_must_see_sight.body %></h3>
 
+    </div>
+    <div>
+    <h3>
+    City: <a href= "/cities/<%@the_must_see_sight.city_id%>"><%= @the_must_see_sight.city.name %></a>
+    </h3>
       <div>
         <a href="/delete_must_see_sight/<%= @the_must_see_sight.id %>">
           Delete must see sight
@@ -18,54 +19,9 @@
       </div>
     </div>
 
-    <dl>
-      <dt>
-        City
-      </dt>
-      <dd>
-        <%= @the_must_see_sight.city_id %>
-      </dd>
-
-      <dt>
-        User
-      </dt>
-      <dd>
-        <%= @the_must_see_sight.user_id %>
-      </dd>
-
-      <dt>
-        Body
-      </dt>
-      <dd>
-        <%= @the_must_see_sight.body %>
-      </dd>
-
-      <dt>
-        Name
-      </dt>
-      <dd>
-        <%= @the_must_see_sight.name %>
-      </dd>
-
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_must_see_sight.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_must_see_sight.updated_at) %> ago
-      </dd>
-    </dl>
-  </div>
 </div>
 
 <hr>
-
 
 <div>
   <div>
@@ -75,27 +31,13 @@
 
     <form action="/modify_must_see_sight/<%= @the_must_see_sight.id %>"  method="post" >
       <div>
-        <label for="city_id_box">
-          City
-        </label>
 
-        <input type="text" id="city_id_box" name="query_city_id" value="<%= @the_must_see_sight.city_id %>">
+        <input type="hidden" id="city_id_box" name="query_city_id" value="<%= @the_must_see_sight.city_id %>">
       </div>
 
       <div>
-        <label for="user_id_box">
-          User
-        </label>
 
-        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_must_see_sight.user_id %>">
-      </div>
-
-      <div>
-        <label for="body_box">
-          Body
-        </label>
-
-        <input type="text" id="body_box" name="query_body" value="<%= @the_must_see_sight.body %>">
+        <input type="hidden" id="user_id_box" name="query_user_id" value="<%= @the_must_see_sight.user_id %>">
       </div>
 
       <div>
@@ -104,6 +46,14 @@
         </label>
 
         <input type="text" id="name_box" name="query_name" value="<%= @the_must_see_sight.name %>">
+      </div>
+      
+      <div>
+        <label for="body_box">
+          Body
+        </label>
+
+        <input type="text" id="body_box" name="query_body" value="<%= @the_must_see_sight.body %>">
       </div>
 
       <button>
