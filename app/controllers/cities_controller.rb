@@ -26,9 +26,9 @@ class CitiesController < ApplicationController
 
     if the_city.valid?
       the_city.save
-      redirect_to("/cities", { :notice => "City created successfully." })
+      redirect_to("/countries/#{the_city.country_id}", { :notice => "City created successfully." })
     else
-      redirect_to("/cities", { :alert => the_city.errors.full_messages.to_sentence })
+      redirect_to("/countries/#{the_city.country_id}", { :alert => the_city.errors.full_messages.to_sentence })
     end
   end
 

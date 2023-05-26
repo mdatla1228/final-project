@@ -10,13 +10,8 @@
     </div>
     <div>
     <h3>
-    City: <a href= "/cities/<%@the_must_see_sight.city_id%>"><%= @the_must_see_sight.city.name %></a>
+    City: <a href= "/cities/<%= @the_must_see_sight.city_id %>"><%= @the_must_see_sight.city.name %></a>
     </h3>
-      <div>
-        <a href="/delete_must_see_sight/<%= @the_must_see_sight.id %>">
-          Delete sight
-        </a>
-      </div>
     </div>
 
 </div>
@@ -25,8 +20,14 @@
 
 <div>
   <div>
+    <% if @current_user != nil %>
+    <% current_user_sights = MustSeeSight.where ({ :id => @the_must_see_sight.id, :user_id => session.fetch(:user_id)}) %>
+
+    <% the_sight = current_user_sights.at(0) %>
+
+    <% if the_sight != nil %>
     <h2>
-      Edit this sight
+      Edit This Sight
     </h2>
 
     <form action="/modify_must_see_sight/<%= @the_must_see_sight.id %>"  method="post" >
@@ -57,10 +58,19 @@
       </div>
 
       <button>
-        Update must see sight
+        Update This Sight
       </button>
     </form>
   </div>
 </div>
+  <div>
+    <a href="/delete_must_see_sight/<%= @the_must_see_sight.id %>">
+          Delete Sight
+    </a>
+  </div>
 
 <hr>
+<% else%>
+
+<% end %>
+<% end %>
